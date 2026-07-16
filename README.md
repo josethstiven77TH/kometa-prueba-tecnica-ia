@@ -57,8 +57,8 @@ Cuando termine, entra a **http://localhost:8080** con usuario `admin` / contrase
    - `core_webservice_get_site_info`
    - `local_kometaws_create_section` (del plugin propio, ver abajo)
    - `local_kometaws_create_resource` (del plugin propio, ver abajo)
-6. **Site administration → Server → Web services → Manage tokens** → crear un token para el usuario admin y ese servicio
-7. Asignar al usuario admin el rol **"Web service user"** en **Assign system roles**
+6. **Site administration → Server → Web services → Manage tokens** → crear un token para el usuario admin y ese servicio que es KOmeta API
+7. **Site administration → users → Permissions → Assign system roles** → asignas el usuario admin el rol de **"Web service user"**
 
 ### Instalar el plugin personalizado `local_kometaws`
 
