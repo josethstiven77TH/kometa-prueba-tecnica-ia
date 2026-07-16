@@ -1,7 +1,9 @@
 import requests
 import urllib.parse
+from app.utils.retry import con_reintentos
 
 
+@con_reintentos(intentos=3, espera_inicial=4.0)
 def generar_imagen(prompt_ingles: str, ruta_salida: str) -> str:
     """
     Genera una imagen a partir de un prompt en inglés usando Pollinations.ai

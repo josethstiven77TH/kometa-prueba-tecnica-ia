@@ -1,9 +1,11 @@
 import requests
 from app.config import MOODLE_URL, MOODLE_TOKEN
+from app.utils.retry import con_reintentos
 
 ENDPOINT = f"{MOODLE_URL}/webservice/rest/server.php"
 
 
+@con_reintentos(intentos=3, espera_inicial=3.0)
 def _llamar_moodle(wsfunction: str, params: dict) -> dict:
     """
     Función auxiliar interna: hace la llamada real a la API REST de Moodle.
@@ -77,6 +79,7 @@ def crear_seccion(id_curso: int, numero_seccion: int, nombre: str, resumen: str 
     return resultado["sectionid"]
 
 
+@con_reintentos(intentos=3, espera_inicial=3.0)
 def subir_archivo_borrador(ruta_archivo: str) -> int:
     """
     Sube un archivo al área de "borradores" (draft area) del usuario.

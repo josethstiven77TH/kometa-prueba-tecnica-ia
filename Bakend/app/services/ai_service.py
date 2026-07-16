@@ -1,13 +1,15 @@
 import json
 import google.generativeai as genai
 from app.config import GEMINI_API_KEY
+from app.utils.retry import con_reintentos
  
 genai.configure(api_key=GEMINI_API_KEY)
  
 # Usamos el modelo flash: rápido y con buen nivel gratuito
 model = genai.GenerativeModel("gemini-flash-latest")
+
  
- 
+@con_reintentos(intentos=3, espera_inicial=8.0)
 def generar_estructura_curso(instruccion: str) -> dict:
     """
     A partir de una instrucción en lenguaje natural, genera la estructura
@@ -42,6 +44,7 @@ sin ```), con esta forma exacta:
     return json.loads(texto)
  
  
+@con_reintentos(intentos=3, espera_inicial=8.0)
 def generar_contenido_modulo(titulo_curso: str, titulo_modulo: str, descripcion_modulo: str) -> dict:
     """
     Genera el contenido de texto explicativo para un módulo específico,
@@ -68,7 +71,8 @@ con esta forma exacta:
  
     return json.loads(texto)
  
- 
+
+@con_reintentos(intentos=2, espera_inicial=5.0) 
 def responder_chat_curso(pregunta: str, contenido_curso: str) -> str:
     """
     Responde una pregunta del usuario sobre el curso, usando SOLO
