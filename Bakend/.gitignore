@@ -1,0 +1,16 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Variables de entorno (credenciales, NUNCA subir)
+.env
+
+# Archivos generados durante pruebas
+output_prueba/
+archivos_generados/
+
+# Sistema
+.DS_Store
+Thumbs.db
+.vscode/

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kometa · Generador de Cursos con IA</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="topbar__brand">
+            <span class="topbar__mark">☄</span>
+            <span class="topbar__name">Kometa</span>
+        </div>
+        <div class="topbar__steps" id="stepIndicator">
+            <span class="step step--active" data-step="1">01 Instrucción</span>
+            <span class="step" data-step="2">02 Vista previa</span>
+            <span class="step" data-step="3">03 Publicado</span>
+        </div>
+    </header>
+
+    <main class="stage">
+
+        <!-- PASO 1: Instrucción -->
+        <section class="panel panel--active" id="panel-1">
+            <div class="panel__inner panel__inner--narrow">
+                <p class="eyebrow">Nuevo curso</p>
+                <h1 class="hero-title">Describe el curso<br>que quieres crear</h1>
+                <p class="hero-sub">Una instrucción en lenguaje natural es suficiente. La IA diseña la estructura, redacta el contenido, genera el material y lo publica en Moodle.</p>
+
+                <form id="formInstruccion" class="instruction-form">
+                    <textarea
+                        id="inputInstruccion"
+                        placeholder="Ej: crea un curso de Excel intermedio con 4 módulos"
+                        rows="3"
+                        required
+                    ></textarea>
+                    <button type="submit" class="btn btn--primary" id="btnGenerar">
+                        Generar curso →
+                    </button>
+                </form>
+
+                <div class="examples">
+                    <span class="examples__label">Prueba con:</span>
+                    <button class="chip" type="button" data-example="crea un curso de Python básico con 3 módulos">Python básico</button>
+                    <button class="chip" type="button" data-example="crea un curso de marketing digital con 4 módulos">Marketing digital</button>
+                    <button class="chip" type="button" data-example="crea un curso de finanzas personales con 3 módulos">Finanzas personales</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PASO 2: Preview -->
+        <section class="panel" id="panel-2">
+            <div class="panel__inner">
+                <p class="eyebrow">Antes de publicar</p>
+                <h2 class="section-title" id="previewNombreCurso">—</h2>
+                <p class="hero-sub" id="previewDescripcion">—</p>
+
+                <div class="modules" id="modulesContainer">
+                    <!-- módulos generados dinámicamente -->
+                </div>
+
+                <div class="publish-bar">
+                    <button class="btn btn--ghost" id="btnVolver">← Editar instrucción</button>
+                    <button class="btn btn--primary" id="btnPublicar">Confirmar y publicar en Moodle</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PASO 3: Publicado -->
+        <section class="panel" id="panel-3">
+            <div class="panel__inner panel__inner--narrow panel__inner--center">
+                <div class="success-mark">☄</div>
+                <p class="eyebrow">Listo</p>
+                <h2 class="section-title" id="publicadoTitulo">Curso publicado</h2>
+                <p class="hero-sub" id="publicadoDetalle">Tu curso ya está disponible en Moodle.</p>
+                <a href="#" target="_blank" class="btn btn--primary" id="linkCurso">Ver curso en Moodle →</a>
+                <button class="btn btn--ghost" id="btnNuevoCurso">Crear otro curso</button>
+            </div>
+
+            <div class="chat-box">
+                <h3 class="chat-box__title">Chat de dudas sobre este curso</h3>
+                <div class="chat-box__messages" id="chatMessages"></div>
+                <form id="formChat" class="chat-box__form">
+                    <input type="text" id="inputPregunta" placeholder="Ej: ¿qué se ve en el módulo 2?" required>
+                    <button type="submit" class="btn btn--small">Preguntar</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Overlay de carga -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="comet-loader">
+            <div class="comet-loader__trail"></div>
+            <div class="comet-loader__head"></div>
+        </div>
+        <p class="loading-overlay__text" id="loadingText">Generando…</p>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
