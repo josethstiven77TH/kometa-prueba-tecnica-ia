@@ -125,6 +125,7 @@ Abre **http://localhost:8000**.
 - [x] Generación de podcast (guion + audio)
 - [x] Publicación real en Moodle (curso, secciones, recursos)
 - [x] Chat de dudas sobre el curso
+- [x] Manejo de reintentos con backoff exponencial ante fallos de la API de IA o de Moodle
 
 ## ✨ Extras implementados
 
@@ -133,7 +134,6 @@ Abre **http://localhost:8000**.
 ## ❌ Qué no alcancé a hacer
 
 - Video interactivo con puntos de interacción (extra opcional)
-- Manejo de reintentos automáticos ante fallos de la API de IA o de Moodle (actualmente, si un módulo falla a mitad de la publicación, hay que reintentar el proceso completo)
 - Validación exhaustiva de errores de red intermitentes
 
 ## 🎥 Videos
