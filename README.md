@@ -138,5 +138,5 @@ Abre **http://localhost:8000**.
 
 ## 🎥 Videos
 
-- Video 1 — Decisiones técnicas: _(link)_
-- Video 2 — Demo de uso: _(link)_
+- Video 1 — Decisiones técnicas: https://youtu.be/QlnwBnOLzmg
+- Video 2 — Demo de uso: https://youtu.be/aeX2NfEpWBA
